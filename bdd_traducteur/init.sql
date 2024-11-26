@@ -13,9 +13,17 @@ CREATE TABLE IF NOT EXISTS `prompts` (
   `text_out` varchar(250) NOT NULL,
   `version` varchar(250) NOT NULL,
   `utilisateur` int NOT NULL,
+  `c_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `duration` 
   PRIMARY KEY (`id`),
   KEY `utilisateur` (`utilisateur`),
   CONSTRAINT `prompts_ibfk_1` FOREIGN KEY (`utilisateur`) REFERENCES `utilisateurs` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS `logs` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `duration` FLOAT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `prompts` (`id`, `text_in`, `text_out`, `version`, `utilisateur`) VALUES
